@@ -1,0 +1,77 @@
+import { useState } from 'react';
+import { StyleSheet, TextInput, View, Image } from 'react-native';
+
+
+export default function App() {
+
+  const [numero, setNumero] = useState("")
+  const [porcentagem, setPorcentagem] = useState("")
+
+
+  const mudaNumero = (text)=> {
+    const limpaTexto = text.replace(/[^0-9]/g,'');
+    setNumero(limpaTexto)
+  }
+  const mudaNumero1 = (text)=> {
+    const limpaTexto = text.replace(/[^0-9]/g,'');
+    setPorcentagem(limpaTexto)
+  }
+
+
+  return (
+  
+    
+    <View style={styles.container}>
+      <Image 
+        style = {styles.imagem}
+       source = {require('./assets/fiaplogo.png')}
+      />
+      
+      <TextInput style={styles.input}  
+      placeholder='Insira o nome do produto'
+      
+      />
+      <TextInput style = {styles.input}
+      keyboardType='numeric'
+      placeholder='Insira o valor original do produto'
+      onChangeText={mudaNumero}
+      value={numero}
+
+      />
+      <TextInput style={styles.input}
+      keyboardType='numeric'
+      placeholder='% de aumento do produto'
+      onChangeText={mudaNumero1}
+      value={porcentagem}
+      />
+      
+      
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+  },
+  imagem: {
+    padding:10,
+    backgroundColor: "#D1195D",
+
+  },
+
+  input: {
+   
+    backgroundColor: "#11D2E3",
+    width: 300,
+   justifyContent:"space-between",
+    borderWidth:1,
+    borderColor: "black",
+    padding: 10
+
+  },
+});
