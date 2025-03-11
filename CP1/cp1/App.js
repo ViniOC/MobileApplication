@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import { StyleSheet, TextInput, View, Image } from 'react-native';
+import { StyleSheet, TextInput, View, Image, Button } from 'react-native';
 
 
 export default function App() {
 
   const [numero, setNumero] = useState("")
   const [porcentagem, setPorcentagem] = useState("")
+  const [result, setResult] =useState (null)
 
-
+  
   const mudaNumero = (text)=> {
     const limpaTexto = text.replace(/[^0-9]/g,'');
     setNumero(limpaTexto)
@@ -16,7 +17,8 @@ export default function App() {
     const limpaTexto = text.replace(/[^0-9]/g,'');
     setPorcentagem(limpaTexto)
   }
-
+  const porcent = porcentagem/100;
+  const resultado = numero * porcent
 
   return (
   
@@ -44,7 +46,10 @@ export default function App() {
       onChangeText={mudaNumero1}
       value={porcentagem}
       />
-      
+      <Button
+      title='calcular'
+      onPress={result!== nul && (<Text>Resultado: {result}</Text>)}
+      />
       
     </View>
   );
