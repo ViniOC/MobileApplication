@@ -47,9 +47,9 @@ export default function App() {
       value={porcentagem}
       />
       <Button
-      title='calcular'
-      onPress={result!== nul && (<Text>Resultado: {result}</Text>)}
+      title='calcular' onPress={resultado}
       />
+      onPress={result!== nul && (<Text>Resultado: {result}</Text>)}
       
     </View>
   );
